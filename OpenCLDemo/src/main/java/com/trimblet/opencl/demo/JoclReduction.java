@@ -78,9 +78,9 @@ public final class JoclReduction {
 		initialize();
 
 		// Create input array that will be reduced
-		//		int n = 100_000;
+		int n = 100_000;
 		//		int n = 1_000;
-		int n = 10_000_000;
+		//		int n = 10_000_000;
 		float inputArray[] = new float[n];
 		for (int i=0; i<n; i++) {
 			inputArray[i] = i;
@@ -174,12 +174,12 @@ public final class JoclReduction {
 		clSetKernelArg(kernel, a++, Sizeof.cl_mem, Pointer.to(outputMem));
 
 		// Compute the number of work groups and the global work size
-		long globalWorkSize = numWorkGroups * localWorkSize;
+		final long globalWorkSize = numWorkGroups * localWorkSize;
 
 		// Execute the kernel
+
 		clEnqueueNDRangeKernel(commandQueue, kernel, 1, null,
-				new long[]{globalWorkSize}, new long[]{localWorkSize},
-				0, null, null);
+				new long[]{globalWorkSize}, null, 0, null, null);
 	}
 
 

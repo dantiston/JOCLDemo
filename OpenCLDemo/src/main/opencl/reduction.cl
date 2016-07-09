@@ -1,7 +1,6 @@
 
 // The reduction kernel that is described as "Two-stage reduction" at
-// http://developer.amd.com/resources/documentation-articles/
-//   articles-whitepapers/opencl-optimization-case-study-simple-reductions/
+// http://developer.amd.com/resources/documentation-articles/articles-whitepapers/opencl-optimization-case-study-simple-reductions/
 // adjusted to perform an ADD-reduction instead of a MIN-reduction
  
 __kernel void reduce(
@@ -25,8 +24,7 @@ __kernel void reduce(
     scratch[lid] = accumulator;
     barrier(CLK_LOCAL_MEM_FENCE);
     for(int offset = get_local_size(0) / 2; offset > 0; offset = offset / 2) {
-        if (lid < offset) 
-        {
+        if (lid < offset) {
             float other = scratch[lid + offset];
             float mine = scratch[lid];
             scratch[lid] = mine + other;
