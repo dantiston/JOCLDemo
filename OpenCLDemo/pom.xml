@@ -15,6 +15,13 @@
 
   <dependencies>
   
+    <!-- First party -->
+    <dependency>
+    	<groupId>com.trimblet</groupId>
+    	<artifactId>opencl-utilities</artifactId>
+    	<version>0.1.1-SNAPSHOT</version>
+    </dependency>
+  
     <!-- Log4j -->
 	<dependency>
 		<groupId>org.apache.logging.log4j</groupId>
